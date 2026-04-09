@@ -1,6 +1,10 @@
-# Task Manager - Sprint Board
-
+# Task Manager - Chapter One
+Production URL: http://44.210.109.165:3000/
 A full-stack task management application with a sprint board interface. Allows users to create, organize, and track tasks with features like filtering, searching, assigning, and archiving.
+
+<img width="1920" height="1080" alt="2026-04-09-210951_hyprshot" src="https://github.com/user-attachments/assets/734619bf-d1f5-4260-abb1-49e389d2c8c3" />
+
+<img width="1916" height="1077" alt="2026-04-09-211007_hyprshot" src="https://github.com/user-attachments/assets/7d4a00f2-c5fe-4f93-a8e4-6146f6e90a25" />
 
 ## Prerequisites
 
@@ -11,21 +15,19 @@ A full-stack task management application with a sprint board interface. Allows u
 
 ### Backend
 
-- **Express 5** - Web framework
-- **Prisma ORM 7** - Database ORM
-- **SQLite** - Database (via `better-sqlite3` + `@prisma/adapter-better-sqlite3`)
-- **Zod** - Request validation
+- **Express** 
+- **Prisma ORM**
+- **SQLite**
+- **Zod**
 - **express-rate-limit** - Rate limiting for archive toggle
-- **TypeScript** - Type safety
+- **TypeScript**
 
 ### Frontend
 
-- **Next.js 16** - React framework (App Router)
-- **React 19** - UI library
-- **Tailwind CSS 4** - Styling
-- **react-toastify** - Toast notifications
-- **moment** - Date formatting
-- **lucide-react** - Icons
+- **Next.js 16**
+- **React 19**
+- **Tailwind CSS**
+- **react-toastify**
 
 ## Project Structure
 
@@ -132,28 +134,6 @@ pnpm dev
 - Frontend: `http://localhost:3000`
 - API: `http://localhost:5000`
 
-## Seed Data
-
-The seed script creates:
-- 1 default user
-- Multiple sample tasks across different statuses
-- Sample comments and activity logs
-
-To reset and reseed:
-```bash
-cd apps/api
-npx prisma migrate reset --seed
-```
-
-## Third-Party Libraries
-
-| Library | Purpose |
-|---------|---------|
-| `@faker-js/faker` | Generate seed data |
-| `@prisma/adapter-better-sqlite3` | SQLite adapter for Prisma |
-| `better-sqlite3` | SQLite database driver |
-| `cors` | CORS middleware |
-| `dotenv` | Environment variables |
 | `express-rate-limit` | Rate limiting |
 | `zod` | Schema validation |
 | `react-toastify` | Toast notifications |
