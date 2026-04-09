@@ -19,6 +19,7 @@ FROM deps AS build
 
 COPY . .
 
+ENV DATABASE_URL=file:/app/apps/api/prisma/dev.db
 RUN pnpm --filter api exec prisma generate
 RUN pnpm build
 
