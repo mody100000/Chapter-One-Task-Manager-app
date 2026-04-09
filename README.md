@@ -133,14 +133,3 @@ pnpm dev
 5. **Access the app:**
 - Frontend: `http://localhost:3000`
 - API: `http://localhost:5000`
-
-| `express-rate-limit` | Rate limiting |
-| `zod` | Schema validation |
-| `react-toastify` | Toast notifications |
-| `moment` | Date formatting |
-| `lucide-react` | Icon library |
-| `tailwindcss` | CSS framework |
-
-## License
-
-ISC
