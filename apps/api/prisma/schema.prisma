@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  createdAt DateTime @default(now())
+
+  createdTasks  Task[] @relation("createdTasks")
+  assignedTasks Task[] @relation("assignedTasks")
+  archivedTasks Task[] @relation("archivedTasks")
+
+  comments            Comment[]
+  performedActivities TaskActivityLog[]
+}
+
+enum TaskStatus {
+  BACKLOG
+  IN_PROGRESS
+  BLOCKED
+  DONE
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model Task {
+  id          String       @id @default(uuid())
+  title       String
+  description String?
+  category    String?
+  status      TaskStatus   @default(BACKLOG)
+  priority    TaskPriority @default(MEDIUM)
+  startDate   DateTime     @default(now())
+  dueDate     DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  createdBy   User   @relation(fields: [createdById], references: [id], name: "createdTasks")
+  createdById String
+
+  assignedTo   User?   @relation(fields: [assignedToId], references: [id], name: "assignedTasks")
+  assignedToId String?
+
+  comments     Comment[]
+  activityLogs TaskActivityLog[]
+
+  archievedBy  User?   @relation(fields: [archivedById], references: [id], name: "archivedTasks")
+  archivedById String?
+}
+
+model TaskActivityLog {
+  id        String   @id @default(uuid())
+  action    String
+  timestamp DateTime @default(now())
+
+  task   Task   @relation(fields: [taskId], references: [id])
+  taskId String
+
+  performedBy   User   @relation(fields: [performedById], references: [id])
+  performedById String
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  message   String
+  createdAt DateTime @default(now())
+
+  task   Task   @relation(fields: [taskId], references: [id])
+  taskId String
+
+  createdBy   User   @relation(fields: [createdById], references: [id])
+  createdById String
+}
