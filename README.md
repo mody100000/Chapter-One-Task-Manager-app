@@ -1,6 +1,10 @@
-# Task Manager - Chapter One
+# Chapter One Tech Screen
+
+## Full-Stack: Task Manager web app
+
 Production URL: http://44.210.109.165:3000/
-A full-stack task management application with a sprint board interface. Allows users to create, organize, and track tasks with features like filtering, searching, assigning, and archiving.
+
+A full-stack (Next.js + Express) task management application with a sprint board interface. Allows users to create, organize, and track tasks with features like filtering, searching, assigning, and archiving.
 
 <img width="1920" height="1080" alt="2026-04-09-210951_hyprshot" src="https://github.com/user-attachments/assets/734619bf-d1f5-4260-abb1-49e389d2c8c3" />
 
@@ -15,18 +19,19 @@ A full-stack task management application with a sprint board interface. Allows u
 
 ### Backend
 
-- **Express** 
+- **Express**
 - **Prisma ORM**
 - **SQLite**
+
 - **Zod**
 - **express-rate-limit** - Rate limiting for archive toggle
 - **TypeScript**
 
 ### Frontend
 
-- **Next.js 16**
+- **Next.js 16** -(App Router)
 - **React 19**
-- **Tailwind CSS**
+- **Tailwind**
 - **react-toastify**
 
 ## Project Structure
@@ -90,26 +95,28 @@ A full-stack task management application with a sprint board interface. Allows u
 
 Base URL: `http://localhost:5000/api`
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/tasks` | Get paginated tasks with filters |
-| GET | `/tasks/:id` | Get single task details |
-| POST | `/tasks` | Create new task |
-| PATCH | `/tasks/:id` | Update task |
-| PATCH | `/tasks/:id/assign` | Assign/unassign task |
-| PATCH | `/tasks/:id/archive/toggle` | Toggle archive status |
-| POST | `/comments` | Add comment to task |
-| GET | `/comments/task/:taskId/timeline` | Get task timeline |
-| GET | `/users` | Get assignable users |
+| Method | Endpoint                          | Description                                      |
+| ------ | --------------------------------- | ------------------------------------------------ |
+| GET    | `/tasks`                          | Get paginated tasks with filters                 |
+| GET    | `/tasks/:id`                      | Get single task details                          |
+| POST   | `/tasks`                          | Create new task                                  |
+| PATCH  | `/tasks/:id`                      | Update task                                      |
+| PATCH  | `/tasks/:id/assign`               | Assign/unassign task                             |
+| PATCH  | `/tasks/:id/archive/toggle`       | Toggle archive status                            |
+| POST   | `/comments`                       | Add comment to task                              |
+| GET    | `/comments/task/:taskId/timeline` | Get task timeline (activities and comments logs) |
+| GET    | `/users`                          | Get assignable users                             |
 
 ## Local Setup
 
 1. **Install dependencies:**
+
 ```bash
 pnpm install
 ```
 
 2. **Create `apps/api/.env`:**
+
 ```env
 DATABASE_URL="file:./prisma/dev.db"
 DEFAULT_USER_NAME="Your Name"
@@ -118,6 +125,7 @@ PORT=5000
 ```
 
 3. **Setup database:**
+
 ```bash
 cd apps/api
 npx prisma generate
@@ -126,10 +134,12 @@ npx prisma db seed
 ```
 
 4. **Start development servers:**
+
 ```bash
 pnpm dev
 ```
 
 5. **Access the app:**
+
 - Frontend: `http://localhost:3000`
 - API: `http://localhost:5000`
